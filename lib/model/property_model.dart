@@ -2,5 +2,5 @@ class PropertyModel {
   String image;
   String name;
   String data;
-  PropertyModel(this.image, this.name, this.data);
+  PropertyModel({required this.image, required this.name, required this.data});
 }

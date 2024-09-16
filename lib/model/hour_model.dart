@@ -2,5 +2,5 @@ class HourModel {
   String time;
   String image;
   double tempC;
-  HourModel(this.time, this.image, this.tempC);
+  HourModel({required this.time, required this.image, required this.tempC});
 }

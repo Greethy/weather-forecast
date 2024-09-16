@@ -4,5 +4,5 @@ class ForecastDayModel {
   double maxTemp;
   double minTemp;
   String describe;
-  ForecastDayModel(this.day, this.image, this.maxTemp, this.minTemp, this.describe);
+  ForecastDayModel({required this.day, required this.image, required this.maxTemp, required this.minTemp, required this.describe});
 }

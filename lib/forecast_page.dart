@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/core/app_color.dart';
+import 'package:weather/model/forecastday_model.dart';
+
+import 'mock_data.dart';
 
 class ForecastPage extends StatefulWidget {
   const ForecastPage({super.key});
@@ -97,11 +100,11 @@ class _ForecastPageState extends State<ForecastPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("10 days forecast", style: TextStyle(fontSize: 17, color: Colors.white)),
+                      const Text("5 days forecast", style: TextStyle(fontSize: 17, color: Colors.white)),
                       const SizedBox(height: 20),
                       for (int i = 0; i < 5; i++)
-                        i != 4 ? const Column(children: [ForecastDay(day: day, image: image, maxTemp: maxTemp, minTemp: minTemp, describe: describe), SizedBox(height: 10)])
-                            : ForecastDay(day: day, image: image, maxTemp: maxTemp, minTemp: minTemp, describe: describe)
+                        i != 4 ? Column(children: [ForecastDay(data: MockData.forecastDayData[i]), SizedBox(height: 10)])
+                            : ForecastDay(data: MockData.forecastDayData[i])
                     ],
                   )
                 )
@@ -113,24 +116,20 @@ class _ForecastPageState extends State<ForecastPage> {
   }
 }
 class ForecastDay extends StatelessWidget {
-  final String day;
-  final String image;
-  final double maxTemp;
-  final double minTemp;
-  final String describe;
-  const ForecastDay({super.key, required this.day, required this.image, required this.maxTemp, required this.minTemp, required this.describe});
+  final ForecastDayModel data;
+  const ForecastDay({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(day, style: TextStyle(fontSize: 12, color: Colors.white),),
-        Image.asset(image, height: 30, width: 30,),
-        Text("$maxTemp°", style: TextStyle(fontSize: 16, color: Colors.white),),
+        Text(data.day, style: TextStyle(fontSize: 12, color: Colors.white),),
+        Image.asset(data.image, height: 30, width: 30,),
+        Text("${data.maxTemp}°", style: TextStyle(fontSize: 16, color: Colors.white),),
         Divider(height: 10, color: LightThemeColor.grey, thickness: 3, endIndent: 5,),
-        Text("$minTemp°", style: TextStyle(fontSize: 13, color: LightThemeColor.grey)),
-        Text(describe, style: TextStyle(fontSize: 16, color: LightThemeColor.grey))
+        Text("${data.minTemp}°", style: TextStyle(fontSize: 13, color: LightThemeColor.grey)),
+        Text(data.describe, style: TextStyle(fontSize: 16, color: LightThemeColor.grey))
       ],
     );
   }
