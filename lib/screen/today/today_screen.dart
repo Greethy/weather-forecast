@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:today/forecast_screen.dart';
+import 'package:today/screen/forecast/forecast_screen.dart';
 import 'today_provider.dart';
 
 class TodayScreen extends StatefulWidget {
@@ -190,7 +190,7 @@ class TodayScreenState extends State<TodayScreen> {
 
   /// Section Widget
   Widget _buildHourlyForecast(BuildContext context) {
-    return Container(
+    return Container( 
       width: double.maxFinite,
       margin: EdgeInsets.only(right: 4),
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -212,7 +212,7 @@ class TodayScreenState extends State<TodayScreen> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForecastScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForecastScreen.builder(context)));
                   },
                   child: Text(
                     "Forecast ->",
@@ -298,7 +298,7 @@ class HoursOneItemWidget extends StatelessWidget {
             hoursOneItemModelObj.ten!,
             style: TextStyle(
               color: Color(0XFFFFFFFF),
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w500,
             ),
